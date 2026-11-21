@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HairsbyDinma · Try On</title>
+  <meta name="description" content="Try HairsbyDinma wigs on the model, turn it to see the front, side and back, then check out." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="announce">Order processing takes 2 working days</div>
+
+  <header class="header">
+    <a class="logo" href="#" aria-label="HairsbyDinma home">
+      <span class="logo__top">HAIRS BY</span>
+      <span class="logo__script">Dinma</span>
+    </a>
+
+    <nav class="tabs glass" id="tabs" role="tablist" aria-label="Hair categories">
+      <button class="tab is-active" role="tab" aria-selected="true" data-cat="all">All</button>
+      <button class="tab" role="tab" aria-selected="false" data-cat="frontal">Frontal</button>
+      <button class="tab" role="tab" aria-selected="false" data-cat="bustdown">Bust Down</button>
+      <button class="tab" role="tab" aria-selected="false" data-cat="coily">Coily</button>
+    </nav>
+
+    <div class="actions">
+      <span class="currency">NGN ₦</span>
+      <button class="icon-btn" aria-label="Search" data-soon="Search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button>
+      <button class="icon-btn" aria-label="Account" data-soon="Accounts"><svg viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
+      <button class="icon-btn bag-btn" aria-label="Open bag" id="openBag">
+        <svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="bag-count" id="bagCount" hidden>0</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="wordmark" aria-hidden="true">DINMA</div>
+
+    <nav class="rail glass" aria-label="Shortcuts">
+      <button class="rail__btn is-active" aria-label="Try on"><svg viewBox="0 0 24 24"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.14 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"/></svg></button>
+      <button class="rail__btn" aria-label="Save this hair" id="saveBtn"><svg viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></button>
+      <button class="rail__btn" aria-label="Open bag" data-open-bag><svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></button>
+      <button class="rail__btn" aria-label="Account" data-soon="Accounts"><svg viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
+    </nav>
+
+    <div class="col col--left" id="colLeft"></div>
+
+    <section class="stage" aria-label="Try-on stage">
+      <div class="arch-ring">
+        <div class="arch" id="arch" tabindex="0" role="img" aria-label="Model wearing the selected hair. Drag or use the arrow keys to turn.">
+          <img class="arch__img" id="viewA" alt="" draggable="false" />
+          <img class="arch__img" id="viewB" alt="" draggable="false" />
+        </div>
+      </div>
+
+      <button class="rotate rotate--left glass" id="rotLeft" aria-label="Turn left"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg></button>
+      <button class="rotate rotate--right glass" id="rotRight" aria-label="Turn right"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/></svg></button>
+
+      <div class="wearing glass" aria-live="polite">
+        <span class="eyebrow"><i class="dot"></i>NOW WEARING</span>
+        <strong id="wearName">Rich Bounce Body Wave</strong>
+        <span id="wearMeta">22″ · Natural Black · Front view</span>
+      </div>
+
+      <div class="orbit" aria-hidden="true"></div>
+      <div class="drag-pill glass" aria-hidden="true">
+        <span class="drag-pill__knob"><svg viewBox="0 0 24 24"><path d="m18 8 4 4-4 4"/><path d="m6 8-4 4 4 4"/><path d="M2 12h20"/></svg></span>
+        DRAG TO ROTATE · 360°
+      </div>
+
+      <div class="views glass" id="views" role="radiogroup" aria-label="View">
+        <button class="view-btn is-active" role="radio" aria-checked="true" data-angle="0"><img alt="" /><span>Front</span></button>
+        <button class="view-btn" role="radio" aria-checked="false" data-angle="90"><img alt="" /><span>Side</span></button>
+        <button class="view-btn" role="radio" aria-checked="false" data-angle="180"><img alt="" /><span>Back</span></button>
+      </div>
+    </section>
+
+    <div class="col col--right" id="colRight"></div>
+
+    <div class="mobile-cards" id="mobileCards" aria-label="Hair options"></div>
+  </main>
+
+  <section class="bar glass" aria-label="Selected hair">
+    <div class="bar__product">
+      <img class="bar__thumb" id="barThumb" alt="" />
+      <div>
+        <div class="bar__name" id="barName">Rich Bounce Body Wave</div>
+        <div class="bar__spec" id="barSpec">Frontal · 13×4 HD lace · 180% density</div>
+      </div>
+    </div>
+    <div class="bar__opt">
+      <span class="label">LENGTH</span>
+      <div class="chips" id="lengths"></div>
+    </div>
+    <div class="bar__opt">
+      <span class="label" id="colourLabel">COLOUR · NATURAL BLACK</span>
+      <div class="swatches" id="colours"></div>
+    </div>
+    <div class="bar__price">
+      <div class="price" id="barPrice">₦50,000</div>
+      <div class="muted">Processing: 2 working days</div>
+    </div>
+    <div class="bar__actions">
+      <button class="btn btn--soft" id="addToBag">Add to bag</button>
+      <button class="btn btn--dark" id="buyNow">Checkout <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+    </div>
+  </section>
+
+  <!-- Bag drawer -->
+  <div class="scrim" id="scrim" hidden></div>
+  <aside class="drawer" id="drawer" aria-label="Your bag" aria-hidden="true">
+    <div class="drawer__head">
+      <h2>Your bag <span id="drawerCount">(0)</span></h2>
+      <button class="icon-btn icon-btn--soft" id="closeBag" aria-label="Close bag"><svg viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+    </div>
+    <div class="notice"><svg viewBox="0 0 24 24"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.14 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"/></svg>Order processing takes 2 working days.</div>
+    <div class="drawer__items" id="bagItems"></div>
+    <div class="empty" id="bagEmpty">
+      <p>Your bag is empty.</p>
+      <button class="link" data-close-bag>Keep trying on</button>
+    </div>
+    <div class="upsell" id="upsell">
+      <span class="upsell__icon"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5C9.5 3 11 5 12 8c1-3 2.5-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg></span>
+      <div class="upsell__text"><strong>Branded Gift Box + Hair Tag</strong><span>Your wig, delivered in style · ₦15,000</span></div>
+      <button class="btn btn--line btn--sm" id="giftBtn">Add</button>
+    </div>
+    <div class="drawer__spacer"></div>
+    <div class="summary" id="summary">
+      <div class="row"><span>Subtotal</span><span id="subtotal">₦0</span></div>
+      <div class="row"><span>Delivery</span><span>Calculated at checkout</span></div>
+      <hr />
+      <div class="row row--total"><span>Total</span><span id="total">₦0</span></div>
+      <button class="btn btn--dark btn--block" id="toCheckout">Checkout <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+      <button class="link" data-close-bag>Continue trying on</button>
+    </div>
+  </aside>
+
+  <!-- Checkout -->
+  <div class="modal" id="checkout" role="dialog" aria-modal="true" aria-labelledby="coTitle" hidden>
+    <div class="modal__card">
+      <button class="icon-btn icon-btn--soft modal__close" id="closeCheckout" aria-label="Close checkout"><svg viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+      <form class="co" id="coForm" novalidate>
+        <div class="co__form">
+          <h2 id="coTitle">Checkout</h2>
+          <p class="muted">Prototype only. Nothing is charged or sent.</p>
+          <fieldset>
+            <legend>Contact</legend>
+            <label>Email<input type="email" name="email" required placeholder="you@example.com" autocomplete="email" /></label>
+            <label>Phone<input type="tel" name="phone" required placeholder="+234" autocomplete="tel" /></label>
+          </fieldset>
+          <fieldset>
+            <legend>Delivery</legend>
+            <label>Full name<input name="name" required autocomplete="name" /></label>
+            <label>Address<input name="address" required autocomplete="street-address" /></label>
+            <div class="two">
+              <label>City<input name="city" required autocomplete="address-level2" /></label>
+              <label>State<input name="state" required autocomplete="address-level1" /></label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Shipping</legend>
+            <label class="radio"><input type="radio" name="ship" value="lagos" checked /> <span>Within Lagos</span><em>Rates confirmed after order</em></label>
+            <label class="radio"><input type="radio" name="ship" value="nationwide" /> <span>Nationwide</span><em>Rates confirmed after order</em></label>
+            <label class="radio"><input type="radio" name="ship" value="intl" /> <span>International</span><em>Rates confirmed after order</em></label>
+          </fieldset>
+        </div>
+        <div class="co__summary">
+          <h3>Order summary</h3>
+          <div id="coItems"></div>
+          <hr />
+          <div class="row row--total"><span>Total</span><span id="coTotal">₦0</span></div>
+          <button class="btn btn--dark btn--block" type="submit">Place order</button>
+          <p class="muted small">You'll pay securely on the next step.</p>
+        </div>
+      </form>
+      <div class="done" id="coDone" hidden>
+        <div class="done__badge"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <h2>Order placed</h2>
+        <p>Thank you! Your order <strong id="orderNo"></strong> is confirmed. Order processing takes 2 working days.</p>
+        <button class="btn btn--dark" id="doneBtn">Back to try-on</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="hair-engine.js?v=7"></script>
+  <script src="app.js?v=5"></script>
+</body>
+</html>
